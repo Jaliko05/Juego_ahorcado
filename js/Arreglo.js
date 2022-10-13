@@ -1,4 +1,4 @@
-class Index {
+class Arreglo {
   constructor() {
     this.palabras = ["CODIGO", "REACT", "FRONTEND", "HTML"];
   }

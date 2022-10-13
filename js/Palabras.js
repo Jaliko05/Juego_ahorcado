@@ -1,4 +1,4 @@
-let palabras_escoger = new Index();
+let palabras_escoger = new Arreglo();
 palabras_escoger.optener_locaStorage();
 let palabras_secretas = palabras_escoger.palabras;
 console.log(palabras_secretas);

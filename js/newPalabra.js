@@ -13,7 +13,7 @@ input.addEventListener("input", (e) => {
 });
 
 function agregar_palabra() {
-  let index = new Index();
+  let index = new Arreglo();
   index.new_palabra(input.value);
   console.log(index.palabras)
 }
