@@ -15,7 +15,7 @@ class Arreglo {
   }
   new_palabra(palabra) {
     let palaba_storage = localStorage.getItem("arreglo_palabra");
-    if(palaba_storage != ""){
+    if(palaba_storage != null){
       this.palabras = palaba_storage.split(",");
     }
     this.palabras.push(palabra);
