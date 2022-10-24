@@ -251,7 +251,7 @@ h4 {
   border: none;
   cursor: pointer;
 }
-.input_text{
+#input_text{
   position: relative;
   width: 90%;
   text-decoration: none;
@@ -259,7 +259,8 @@ h4 {
   border: none;
   outline: none;
   color: #005c53;
-}.input_text:active{
+}
+#input_text:active{
   border: none;
 }
 @media (max-width: 700px) {

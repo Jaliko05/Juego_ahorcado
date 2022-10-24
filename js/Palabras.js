@@ -38,6 +38,7 @@ function nuevo_juego() {
   lienzo_letra.width = lienzo_letra.width;
   lienzo_incorecta.width = lienzo_incorecta.width;
   escoger_palabra();
+  document.getElementById("input_text").focus()
 }
 
 function escoger_palabra() {
@@ -80,13 +81,17 @@ function dibujar_lineas(palabra) {
   }
 }
 
-document.addEventListener("keydown", optenerTecla);
+let input = document.getElementById("input_text");
+input.addEventListener("input", optenerTecla);
+// document.addEventListener("keydown", optenerTecla);
 function optenerTecla(event) {
-  tecla_ingresada = event.key;
-  tecla_codigo = event.keyCode;
+  tecla_ingresada = input.value;
+  console.log(tecla_ingresada);
+  document.getElementById("input_text").value = "";
+  // tecla_codigo = event.keyCode;
   if (parar == false) {
     comprobar_tecla(tecla_codigo);
-    if (esletra == true) {
+    if (true) {
       if (tecla_ingresada == tecla_ingresada.toUpperCase()) {
         if (letra_ingresada_antes.length > 0) {
           for (let i = 0; i < letra_ingresada_antes.length; i++) {
