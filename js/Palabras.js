@@ -9,8 +9,11 @@ let esletra = false;
 let contador = 0;
 let parar = false;
 let contador_letra_acertadas = 0;
-escoger_palabra();
+let letra_ingresada_antes = "";
+let letra_ingresada_ahora = "";
+let escribir = true;
 
+escoger_palabra();
 
 let lienzo_horca = document.getElementById("contenedor_juego_canvas_horca");
 let lienzo_lineas = document.getElementById("contenedor_juego_canvas");
@@ -28,6 +31,8 @@ function nuevo_juego() {
   parar = false;
   contador_letra_acertadas = 0;
   cor_x = 20;
+  letra_ingresada_antes = "";
+  esletra = true;
   lienzo_horca.width = lienzo_horca.width;
   lienzo_lineas.width = lienzo_lineas.width;
   lienzo_letra.width = lienzo_letra.width;
@@ -83,8 +88,23 @@ function optenerTecla(event) {
     comprobar_tecla(tecla_codigo);
     if (esletra == true) {
       if (tecla_ingresada == tecla_ingresada.toUpperCase()) {
-        dibujarLetraCorrecta(palabra_adivinar, tecla_ingresada);
-        console.log("si es una letra mayuscula");
+        if (letra_ingresada_antes.length > 0) {
+          for (let i = 0; i < letra_ingresada_antes.length; i++) {
+            if (letra_ingresada_antes.charAt(i) == tecla_ingresada) {
+              escribir = false;
+              break;
+            } else {
+              escribir = true;
+            }
+          }
+        }
+        if (escribir == true) {
+          dibujarLetraCorrecta(palabra_adivinar, tecla_ingresada);
+          letra_ingresada_antes += tecla_ingresada;
+        } else {
+          alert("Ya ingreso esa letra");
+          escribir = true;
+        }
       } else {
         alert("Solo se permiten letras MAYUCULAS!");
         esletra = false;
@@ -95,7 +115,6 @@ function optenerTecla(event) {
 
 function comprobar_tecla(tecla_code) {
   if (tecla_code >= 65 && tecla_code <= 90) {
-    console.log("si es una letra");
     esletra = true;
   } else {
     esletra = false;
@@ -109,7 +128,6 @@ function dibujarLetraCorrecta(palabra, tecla) {
     let x = inicio_lineas(palabra);
     if (tecla == palabra.charAt(i)) {
       contador_letra_acertadas += 1;
-      console.log(contador_letra_acertadas);
       letra_incorrecta = false;
       x = x + ancho_linea * 2 * i;
       let lienzo_letra = document.getElementById(
